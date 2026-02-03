@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StockMaster extends Model
+class StockConsolidate extends Model
 {
-    /** @use HasFactory<\Database\Factories\StockMasterFactory> */
+    /** @use HasFactory<\Database\Factories\StockConsolidateFactory> */
     use HasFactory;
 
     protected $guarded = ['id'];

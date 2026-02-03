@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\StockMaster;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -11,7 +11,7 @@ class StockMasterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class StockMasterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'stm_item_name' => 'string|required',
+            'stm_item_category' => 'string|required',
+            'stm_item_subcategory' => 'string|required',
+            'stm_purity' => 'numeric|required',
+            'stm_firm_id'  => 'integer|required',
+            'stm_user_id' => 'integer|required'
         ];
     }
 }

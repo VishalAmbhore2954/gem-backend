@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('stock_masters', function (Blueprint $table) {
             $table->id();
+            $table->string('stm_item_name');
+            $table->string('stm_item_category');
+            $table->string('stm_item_subcategory');
+            $table->string('stm_purity');
+            $table->string('stm_user_id');
+            $table->string('stm_firm_id');
             $table->timestamps();
         });
     }

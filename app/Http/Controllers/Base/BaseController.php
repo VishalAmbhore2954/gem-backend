@@ -14,4 +14,11 @@ class BaseController extends Controller
             'data' => $data
         ],200);
     }
+
+    public function showSuccessWithoutData(string $message){
+        return response()->json([
+            'status' => true,
+            'message' => $message,
+        ]);
+    }
 }

@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\StockMaster;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StockMasterResource extends FormRequest
+class UpdateStockMasterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StockMasterResource extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'stm_item_name' => 'string|required',
+            'stm_item_category' => 'string|required',
+            'stm_item_subcategory' => 'string|required',
+            'stm_purity' => 'decimal|required',
         ];
     }
 }
