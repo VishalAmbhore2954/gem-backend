@@ -22,7 +22,7 @@ class StoreStockConsolidateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'stc_item_code' => 'numeric|required|min:6',
+            'stc_item_code' => 'string|required|min:6',
             'stc_item_name' => 'string|required',
             'stc_item_category'  => 'string|required',
             'stc_sub_category' => 'string|required',

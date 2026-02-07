@@ -15,6 +15,7 @@ class StockMasterResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'stm_item_name' => $this->stm_item_name,
             'stm_item_category' => $this->stm_item_category,
             'stm_item_subcategory' => $this->stm_item_subcategory,

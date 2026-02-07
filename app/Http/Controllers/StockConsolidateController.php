@@ -91,4 +91,14 @@ class StockConsolidateController extends BaseController
 
         return  $this->showSuccessWithoutData("Stock consolidate data deleted successfully");
     }
+
+    /**
+     * Get Auto generated item code
+     */
+    public function itemcode()
+    {
+        $itemcode = $this->stockConsolidateService->getNextCode();
+
+        return  $this->showSuccessWithData("Item Code",$itemcode);
+    }
 }

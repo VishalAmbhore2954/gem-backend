@@ -49,4 +49,26 @@ class StockConsolidateService{
 
         return $consolidate;
     }
+
+
+    public function getNextCode()
+    {
+        // Get the latest item code
+        $lastCode = StockConsolidate::orderBy('id', 'desc')
+            ->value('stc_item_code');
+
+        if (!$lastCode) {
+            // No records yet
+            return 'ITEM00001';
+        }
+
+        // Extract numeric part (ITEM00001 -> 00001)
+        $number = (int) substr($lastCode, 4);
+
+        // Increment
+        $nextNumber = $number + 1;
+
+        // Generate next code
+        return 'ITEM' . str_pad($nextNumber, 5, '0', STR_PAD_LEFT);
+    }
 }

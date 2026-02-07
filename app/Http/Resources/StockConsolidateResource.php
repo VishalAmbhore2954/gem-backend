@@ -15,6 +15,7 @@ class StockConsolidateResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'stc_item_code' => $this->stc_item_code,
             'stc_item_name' => $this->stc_item_name,
             'stc_item_category'  => $this->stc_category,

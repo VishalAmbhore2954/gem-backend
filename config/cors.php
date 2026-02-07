@@ -20,7 +20,7 @@ return [
     'allowed_methods' => ['*'],
 
     // Allowed origins (Angular running on 4300)
-    'allowed_origins' => ['http://localhost:4300','https://gem-frontend-eight.vercel.app'],
+    'allowed_origins' => ['http://localhost:4200','https://gem-frontend-eight.vercel.app'],
 
     // If needed, you can use regex patterns here
     'allowed_origins_patterns' => [],
