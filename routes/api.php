@@ -18,5 +18,6 @@ Route::middleware('jwt.auth')->group(function () {
    
 });
  Route::apiResource('stock-master', StockMasterController::class);
+ Route::get('stock-consolidate/totalstock', [StockConsolidateController::class,'totalStock']);
  Route::get('stock-consolidate/itemcode', [StockConsolidateController::class,'itemcode']);
  Route::apiResource('stock-consolidate', StockConsolidateController::class);

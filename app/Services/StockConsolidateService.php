@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\StockMaster;
 use App\Models\StockConsolidate;
+use Carbon\Carbon;
 
 class StockConsolidateService{
     public function createStockConsolidateData(array $data){
@@ -70,5 +71,35 @@ class StockConsolidateService{
 
         // Generate next code
         return 'ITEM' . str_pad($nextNumber, 5, '0', STR_PAD_LEFT);
+    }
+
+
+    public function totalStock()
+    {
+        $now = Carbon::now();
+        $lastMonth = $now->copy()->subMonth();
+
+        // Current month total
+        $currentTotal = StockConsolidate::whereMonth('created_at', $now->month)
+            ->whereYear('created_at', $now->year)
+            ->sum('stc_purchase_price');
+
+        // Previous month total
+        $previousTotal = StockConsolidate::whereMonth('created_at', $lastMonth->month)
+            ->whereYear('created_at', $lastMonth->year)
+            ->sum('stc_purchase_price');
+
+        // Percentage calculation
+        if ($previousTotal > 0) {
+            $percentageChange = (($currentTotal - $previousTotal) / $previousTotal) * 100;
+        } else {
+            $percentageChange = 0;
+        }
+
+        return response()->json([
+            'current_month_total'  => $currentTotal,
+            'previous_month_total' => $previousTotal,
+            'percentage_change'    => round($percentageChange, 2)
+        ]);
     }
 }

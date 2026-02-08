@@ -101,4 +101,15 @@ class StockConsolidateController extends BaseController
 
         return  $this->showSuccessWithData("Item Code",$itemcode);
     }
+
+
+    /**
+     * Get Total Stock
+     */
+    public function totalStock()
+    {
+        $total = $this->stockConsolidateService->totalStock();
+
+        return  $this->showSuccessWithData("Total Stock",$total);
+    }
 }
